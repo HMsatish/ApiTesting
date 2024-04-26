@@ -1,0 +1,1517 @@
+{
+	"info": {
+		"_postman_id": "915b6cb9-2695-4112-ba21-36224768622c",
+		"name": "Auth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26545323",
+		"_collection_link": "https://bold-equinox-85984.postman.co/workspace/MT-28~2b98d5b2-51d4-42f7-9711-6acb91d8eef7/collection/26545323-915b6cb9-2695-4112-ba21-36224768622c?action=share&source=collection_link&creator=26545323"
+	},
+	"item": [
+		{
+			"name": "POSITIVE TC",
+			"item": [
+				{
+					"name": "Basic Auth",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Verify json responce contain some mandatory string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"authenticated\");\r",
+									"});\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.user).to.eql(\"user\");\r",
+									"});\r",
+									"pm.test(\"Verify Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									"pm.test(\"Verify Status code name has OK string \", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\",\"application/json\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{User}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}basic-auth/{{User}}/{{password}}",
+							"host": [
+								"{{BaseURL}}basic-auth"
+							],
+							"path": [
+								"{{User}}",
+								"{{password}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bearer Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Verify json responce contain some mandatory string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"authenticated\");\r",
+									"});\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.token).to.eql(\"Bearer 12345\");\r",
+									"});\r",
+									"pm.test(\"Verify Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									"pm.test(\"Verify Status code name has OK string \", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\",\"application/json\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Bearer token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "file",
+							"file": {}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/bearer",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"bearer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Digest-auth with qop",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Verify json responce contain some mandatory string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"authenticated\");\r",
+									"});\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.user).to.eql(\"user\");\r",
+									"});\r",
+									"pm.test(\"Verify Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									"pm.test(\"Verify Status code name has OK string \", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\",\"application/json\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "digest",
+							"digest": [
+								{
+									"key": "qop",
+									"value": "{{qop}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{User}}",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "MD5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}digest-auth/{{qop}}/{{User}}/{{password}}",
+							"host": [
+								"{{BaseURL}}digest-auth"
+							],
+							"path": [
+								"{{qop}}",
+								"{{User}}",
+								"{{password}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Digest-auth with qop1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Verify json responce contain some mandatory string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"authenticated\");\r",
+									"});\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.user).to.eql(\"user\");\r",
+									"});\r",
+									"pm.test(\"Verify Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									"pm.test(\"Verify Status code name has OK string \", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\",\"application/json\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "digest",
+							"digest": [
+								{
+									"key": "qop",
+									"value": "{{qop1}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{User}}",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "MD5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}digest-auth/{{qop1}}/{{User}}/{{password}}",
+							"host": [
+								"{{BaseURL}}digest-auth"
+							],
+							"path": [
+								"{{qop1}}",
+								"{{User}}",
+								"{{password}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Digest-auth with MD5",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Verify json responce contain some mandatory string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"authenticated\");\r",
+									"});\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.user).to.eql(\"user\");\r",
+									"});\r",
+									"pm.test(\"Verify Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									"pm.test(\"Verify Status code name has OK string \", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\",\"application/json\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "digest",
+							"digest": [
+								{
+									"key": "algorithm",
+									"value": "MD5",
+									"type": "string"
+								},
+								{
+									"key": "qop",
+									"value": "{{qop}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{User}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}digest-auth/{{qop}}/{{User}}/{{password}}/{{algorithm1}}",
+							"host": [
+								"{{BaseURL}}digest-auth"
+							],
+							"path": [
+								"{{qop}}",
+								"{{User}}",
+								"{{password}}",
+								"{{algorithm1}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Digest-auth with SHA-256",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Verify json responce contain some mandatory string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"authenticated\");\r",
+									"});\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.user).to.eql(\"user\");\r",
+									"});\r",
+									"pm.test(\"Verify Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									"pm.test(\"Verify Status code name has OK string \", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\",\"application/json\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "digest",
+							"digest": [
+								{
+									"key": "qop",
+									"value": "{{qop1}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{User}}",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "MD5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}digest-auth/{{qop}}/{{User}}/{{password}}/{{algorithm2}}",
+							"host": [
+								"{{BaseURL}}digest-auth"
+							],
+							"path": [
+								"{{qop}}",
+								"{{User}}",
+								"{{password}}",
+								"{{algorithm2}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Digest-auth with SHA-512",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Verify json responce contain some mandatory string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"authenticated\");\r",
+									"});\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.user).to.eql(\"user\");\r",
+									"});\r",
+									"pm.test(\"Verify Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									"pm.test(\"Verify Status code name has OK string \", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\",\"application/json\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "digest",
+							"digest": [
+								{
+									"key": "qop",
+									"value": "{{qop}}",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "MD5",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{User}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}digest-auth/{{qop}}/{{User}}/{{password}}/{{algorithm3}}",
+							"host": [
+								"{{BaseURL}}digest-auth"
+							],
+							"path": [
+								"{{qop}}",
+								"{{User}}",
+								"{{password}}",
+								"{{algorithm3}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Hidden basic Auth",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Verify json responce contain some mandatory string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"authenticated\");\r",
+									"});\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.user).to.eql(\"user\");\r",
+									"});\r",
+									"pm.test(\"Verify Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									"pm.test(\"Verify Status code name has OK string \", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\",\"application/json\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{User}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}hidden-basic-auth/{{User}}/{{password}}",
+							"host": [
+								"{{BaseURL}}hidden-basic-auth"
+							],
+							"path": [
+								"{{User}}",
+								"{{password}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "NEGATIVE TC",
+			"item": [
+				{
+					"name": "Basic Auth",
+					"item": [
+						{
+							"name": "Basic Auth-no auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Verify Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Response time is less than 2000ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"});\r",
+											"pm.test(\"Verify Status code name has OK string \", function () {\r",
+											"    pm.response.to.have.status(\"UNAUTHORIZED\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BaseURL}}basic-auth/{{User}}/{{password}}",
+									"host": [
+										"{{BaseURL}}basic-auth"
+									],
+									"path": [
+										"{{User}}",
+										"{{password}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Basic Auth-Invalid auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Verify Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Response time is less than 2000ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"});\r",
+											"pm.test(\"Verify Status code name has OK string \", function () {\r",
+											"    pm.response.to.have.status(\"UNAUTHORIZED\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Bearer token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BaseURL}}basic-auth/{{User}}/{{password}}",
+									"host": [
+										"{{BaseURL}}basic-auth"
+									],
+									"path": [
+										"{{User}}",
+										"{{password}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Basic Auth-Empty Credentials",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Verify Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Response time is less than 2000ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"});\r",
+											"pm.test(\"Verify Status code name has OK string \", function () {\r",
+											"    pm.response.to.have.status(\"UNAUTHORIZED\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BaseURL}}basic-auth/{{User}}/{{password}}",
+									"host": [
+										"{{BaseURL}}basic-auth"
+									],
+									"path": [
+										"{{User}}",
+										"{{password}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Basic Auth-Invalid Credentials",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Verify Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Response time is less than 2000ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"});\r",
+											"pm.test(\"Verify Status code name has OK string \", function () {\r",
+											"    pm.response.to.have.status(\"UNAUTHORIZED\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "Passasord",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "satish",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BaseURL}}basic-auth/{{User}}/{{password}}",
+									"host": [
+										"{{BaseURL}}basic-auth"
+									],
+									"path": [
+										"{{User}}",
+										"{{password}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Basic Auth-Method tampering",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Verify Status code is 405\", function () {\r",
+											"    pm.response.to.have.status(405);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Response time is less than 2000ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"});\r",
+											"pm.test(\"Verify Status code name has OK string \", function () {\r",
+											"    pm.response.to.have.status(\"METHOD NOT ALLOWED\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{User}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{BaseURL}}basic-auth/{{User}}/{{password}}",
+									"host": [
+										"{{BaseURL}}basic-auth"
+									],
+									"path": [
+										"{{User}}",
+										"{{password}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Bearer Token",
+					"item": [
+						{
+							"name": "Bearer Token-no auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Verify Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Response time is less than 2000ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"});\r",
+											"pm.test(\"Verify Status code name has OK string \", function () {\r",
+											"    pm.response.to.have.status(\"UNAUTHORIZED\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "file",
+									"file": {}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/bearer",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"bearer"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Bearer Token-Invalid auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Verify Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Response time is less than 2000ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"});\r",
+											"pm.test(\"Verify Status code name has OK string \", function () {\r",
+											"    pm.response.to.have.status(\"UNAUTHORIZED\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{User}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "file",
+									"file": {}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/bearer",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"bearer"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Bearer Token-Empty Credentials",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Verify Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Response time is less than 2000ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"});\r",
+											"pm.test(\"Verify Status code name has OK string \", function () {\r",
+											"    pm.response.to.have.status(\"UNAUTHORIZED\");\r",
+											"});\r",
+											"pm.test(\"Successful POST request\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.error;\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "file",
+									"file": {}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/bearer",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"bearer"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Bearer Token-Invalid Credentials",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Verify Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Response time is less than 2000ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"});\r",
+											"pm.test(\"Verify Status code name has OK string \", function () {\r",
+											"    pm.response.to.have.status(\"UNAUTHORIZED\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "Bearer12345678",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BaseURL}}/bearer",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"bearer"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Bearer Token-Method Tampering",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Verify Status code is 405\", function () {\r",
+											"    pm.response.to.have.status(405);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Response time is less than 2000ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"});\r",
+											"pm.test(\"Verify Status code name has OK string \", function () {\r",
+											"    pm.response.to.have.status(\"METHOD NOT ALLOWED\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Bearer token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "file",
+									"file": {}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/bearer",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"bearer"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Digest auth",
+					"item": [
+						{
+							"name": "Digest-auth -no auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Verify Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Response time is less than 2000ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"});\r",
+											"pm.test(\"Verify Status code name has OK string \", function () {\r",
+											"    pm.response.to.have.status(\"UNAUTHORIZED\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BaseURL}}digest-auth/{{qop}}/{{User}}/{{password}}",
+									"host": [
+										"{{BaseURL}}digest-auth"
+									],
+									"path": [
+										"{{qop}}",
+										"{{User}}",
+										"{{password}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Digest-auth -Invalid auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Verify Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Response time is less than 2000ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"});\r",
+											"pm.test(\"Verify Status code name has OK string \", function () {\r",
+											"    pm.response.to.have.status(\"UNAUTHORIZED\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{User}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BaseURL}}digest-auth/{{qop}}/{{User}}/{{password}}",
+									"host": [
+										"{{BaseURL}}digest-auth"
+									],
+									"path": [
+										"{{qop}}",
+										"{{User}}",
+										"{{password}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Digest-auth -Empty Credentials",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Verify Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Response time is less than 2000ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"});\r",
+											"pm.test(\"Verify Status code name has OK string \", function () {\r",
+											"    pm.response.to.have.status(\"UNAUTHORIZED\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "digest",
+									"digest": [
+										{
+											"key": "qop",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "algorithm",
+											"value": "MD5",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BaseURL}}digest-auth/{{qop}}/{{User}}/{{password}}",
+									"host": [
+										"{{BaseURL}}digest-auth"
+									],
+									"path": [
+										"{{qop}}",
+										"{{User}}",
+										"{{password}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Digest-auth -Invalid Credentials",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Verify Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Response time is less than 2000ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"});\r",
+											"pm.test(\"Verify Status code name has OK string \", function () {\r",
+											"    pm.response.to.have.status(\"UNAUTHORIZED\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "digest",
+									"digest": [
+										{
+											"key": "username",
+											"value": "satish",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "password",
+											"type": "string"
+										},
+										{
+											"key": "qop",
+											"value": "auth1",
+											"type": "string"
+										},
+										{
+											"key": "algorithm",
+											"value": "MD5",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BaseURL}}digest-auth/{{qop}}/{{User}}/{{password}}",
+									"host": [
+										"{{BaseURL}}digest-auth"
+									],
+									"path": [
+										"{{qop}}",
+										"{{User}}",
+										"{{password}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Digest auth- Method Tampering",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Verify Status code is 405\", function () {\r",
+											"    pm.response.to.have.status(405);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Response time is less than 2000ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"});\r",
+											"pm.test(\"Verify Status code name has OK string \", function () {\r",
+											"    pm.response.to.have.status(\"METHOD NOT ALLOWED\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "digest",
+									"digest": [
+										{
+											"key": "qop",
+											"value": "{{qop1}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{User}}",
+											"type": "string"
+										},
+										{
+											"key": "algorithm",
+											"value": "MD5",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{BaseURL}}digest-auth/{{qop1}}/{{User}}/{{password}}",
+									"host": [
+										"{{BaseURL}}digest-auth"
+									],
+									"path": [
+										"{{qop1}}",
+										"{{User}}",
+										"{{password}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BaseURL",
+			"value": "https://httpbin.org/",
+			"type": "string"
+		},
+		{
+			"key": "User",
+			"value": "user",
+			"type": "string"
+		},
+		{
+			"key": "password",
+			"value": "passwd",
+			"type": "string"
+		},
+		{
+			"key": "qop",
+			"value": "auth",
+			"type": "string"
+		},
+		{
+			"key": "Bearer token",
+			"value": "Bearer 12345",
+			"type": "string"
+		},
+		{
+			"key": "qop1",
+			"value": "auth-int",
+			"type": "string"
+		},
+		{
+			"key": "algorithm1",
+			"value": "MD5",
+			"type": "string"
+		},
+		{
+			"key": "algorithm2",
+			"value": "SHA-256",
+			"type": "string"
+		},
+		{
+			"key": "algorithm3",
+			"value": "SHA-512",
+			"type": "string"
+		}
+	]
+}
